@@ -1,0 +1,162 @@
+<h1>생활/편의</h1>
+
+    <div class="container-fluid"> 
+
+         <div class="row"> 
+          <div class="filter-button-group"> 
+             <a href="/cate4/41">
+                 <img src="<%= image_path '4-1.png' %>" width="100">
+                 <div class="text">
+                 <p>의료</p>
+                 </div>
+             </a> 
+             <a href="/cate4/42">
+                 <img src="<%= image_path '4-2.jpg' %>" width="100">
+                 <div class="text">
+                 <p>생활/금융</p>
+                 </div>
+             </a> 
+             <a href="/cate4/43">
+                 <img src="<%= image_path '4-3.jpg' %>" width="100">
+                 <div class="text">
+                 <p>마트/편의점</p>
+                 </div>
+             </a> 
+             <a href="/cate4/44">
+                 <img src="<%= image_path '4-4.jpg' %>" width="100">
+                 <div class="text">
+                 <p>헬스/스포츠</p>
+                 </div>
+             </a>
+             <a href="/cate4/45">
+                 <img src="<%= image_path '4-5.jpg' %>" width="100">
+                 <div class="text">
+                 <p>공공시설</p>
+                 </div>
+             </a>
+           </div> 
+        </div> 
+    </div>
+     
+<div id="map" style="width:100%; height: 250px;"></div>
+<!-- map의 크기는 직접 px로 지정해야 함 특히 높이,,, -->
+<!--<div class="iw_inner">   <h3>서울특별시청</h3>   <p>서울특별시 중구 태평로1가 31 | 서울특별시 중구 세종대로 110 서울특별시청<br>       <img src="'./img/hi-seoul.jpg' %>" width="55" height="55" alt="서울시청" class="thumb" /><br>       02-120 | 공공,사회기관 > 특별,광역시청<br>       <a href="http://www.seoul.go.kr" target="_blank">www.seoul.go.kr/</a>   </p></div>-->
+
+
+<!-- 자바 스크립트 코드 넣을 때, <script> 태그 안에 넣어준다. -->
+<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=xQrtIyFbnOwAG6cGMSS7&submodules=geocoder"></script>
+<!-- 네이버 지도 API 사용할 수 있게 하는 코드 -->
+<script type="text/javascript">
+    var naveraddr = new naver.maps.LatLng(37.3595704, 127.105399); // 네이버 팩토리
+    var jeju = new naver.maps.LatLng(33.3590628, 126.534361);  // 제주 백록담
+    var cityhall = new naver.maps.LatLng(37.5666805, 126.9784147);  // 서울시청
+    var gnst = new N.LatLng(37.497942,127.0265267); // 강남역
+    var ysst = new N.LatLng(37.5011188,127.0349583); // 역삼역
+    var ys1p = new N.LatLng(37.499925,127.0306543); // 역삼1동 우체국
+    var addrs = [naveraddr, jeju, cityhall];
+
+    var mapOptions = {
+        scaleControl: false,
+        logoControl: false,
+        mapDataControl: false,
+        zoomControl: true,
+        zoomControlOptions: {
+    //    style: naver.maps.ZoomControlStyle.SMALL,
+        position: naver.maps.Position.RIGHT_BOTTOM
+        },
+        minZoom: 1,
+        maxZoom: 15
+    };
+    var map = new naver.maps.Map('map', mapOptions);
+        map.setCenter(ys1p); // 중심 좌표 설정
+        map.setZoom(10);     // 기본 줌 레벨 변경
+        
+    // var data = <#%= @schools.html_safe %>
+    var data = <%= @dummies.html_safe %>
+    
+    var markers = [];
+    var infoWindows = [];
+  
+    if (<%= @num %> == 4) {
+        for (var i=0; i<30; i++){
+            var dummy = data[i];
+            var content = [
+                '<h2><strong>'+dummy.name+'</strong></b>',
+                '<h4>'+dummy.address+'</h4>',
+                '<h4>'+dummy.contact+'</h4>',
+                '<h4>'+dummy.time+'</h4>',
+                // '<a href='+restaurant.link+'target="_blank">'+"알아보기"+'</a>'
+                ].join("");
+            var marker = new N.Marker({
+                position: new N.LatLng(dummy.lat, dummy.lng),
+                map: map,
+                icon: {
+                url: 'https://user-images.githubusercontent.com/37928445/42745608-af33f8de-890e-11e8-90ec-09c7b6e71147.png',
+                size: new naver.maps.Size(70, 70),
+                origin: new naver.maps.Point(0, 0),
+                anchor: new naver.maps.Point(35, 35) // 사진 기준 좌표 (0,0)은 우하단!
+                },
+                // animation: 1
+            });
+            var infoWindow = new N.InfoWindow({
+                content: content
+            });
+            
+            markers.push(marker);
+            infoWindows.push(infoWindow)
+        }
+    }
+   
+    naver.maps.Event.addListener(map, 'idle', function() {
+    updateMarkers(map, markers);
+    });
+    
+    function updateMarkers(map, markers) {
+    
+        var mapBounds = map.getBounds();
+        var marker, position;
+    
+        for (var i = 0; i < markers.length; i++) {
+    
+            marker = markers[i]
+            position = marker.getPosition();
+    
+            if (mapBounds.hasLatLng(position)) {
+                showMarker(map, marker);
+            } else {
+                hideMarker(map, marker);
+            }
+        }
+    }
+    
+    function showMarker(map, marker) {
+    
+        if (marker.getMap()) return;
+        marker.setMap(map);
+    }
+    
+    function hideMarker(map, marker) {
+    
+        if (!marker.getMap()) return;
+        marker.setMap(null);
+    }
+    
+    for (var i=0, ii=markers.length; i<ii; i++) {
+    naver.maps.Event.addListener(markers[i], 'click', getClickHandler(i));
+}
+
+    
+    // 해당 마커의 인덱스를 seq라는 클로저 변수로 저장하는 이벤트 핸들러를 반환합니다.
+    function getClickHandler(seq) {
+        return function(e) {
+            var marker = markers[seq],
+                infoWindow = infoWindows[seq];
+    
+            if (infoWindow.getMap()) {
+                infoWindow.close();
+            } else {
+                infoWindow.open(map, marker);
+            }
+        }
+    }
+</script>

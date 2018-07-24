@@ -1,0 +1,367 @@
+<%= splash(params[:controller], params[:action], params[:id], params[:daytime]) %>
+
+<script>
+    var s = document.getElementById('splash');
+    setTimeout(function(){ 
+        s.remove();
+    }, 3000);
+</script>
+
+<div class="container mt-5 mb-4">
+<div class="col-md-4 offset-md-4 col-sm-12 mb-4">
+<% unless @category == '5' %>
+<!--style="width: 550px">-->
+  <div class="search-wrapper">
+    <div class="input-holder">
+        <input type="text" class="search-input" placeholder="카테고리명/상호명"/>
+        <button class="search-icon" onclick="searchToggle(this, event);"><span></span></button>
+    </div>
+    <span class="close" onclick="searchToggle(this, event);"></span>
+  </div>
+  <% end %>
+</div>  
+</div>
+  
+
+
+<% if @category == '1' %>
+
+  <h1>놀기</h1>
+  
+   <div class="container-fluid"> 
+
+       <div class="row"> 
+        <div class="filter-button-group"> 
+           <a href="/posts/11">
+               <img src="<%= image_path '1-1p.jpg' %>" width="100">
+               <div class="text">
+               <strong><p>PC방</p></strong>
+               </div>
+           </a>
+           <a href="/posts/12">
+               <img src="<%= image_path '1-2c.jpg' %>" width="100">
+               <div class="text">
+               <p>코인노래방</p>
+               </div>
+           </a> 
+           <a href="/posts/13">
+               <img src="<%= image_path '1-3d.png' %>" width="100">
+               <div class="text">
+               <p>오락실/당구장/볼링장</p>
+               </div>
+           </a> 
+           <a href="/posts/14">
+               <img src="<%= image_path '1-4c.jpg' %>" width="100">
+               <div class="text">
+               <p>만화카페/방탈출</p>
+               </div>
+           </a> 
+           <a href="/posts/15">
+               <img src="<%= image_path '1-5m.jpg' %>" width="100">
+               <div class="text">
+               <p>영화관</p>
+               </div>
+           </a> 
+           <a href="/posts/16">
+               <img src="<%= image_path '1-6n.jpg' %>" width="100">
+               <div class="text">
+               <p>클럽/나이트</p>
+               </div>
+           </a> 
+         </div> 
+      </div> 
+   </div> 
+       
+<% elsif @category == '2' %>
+
+    <h1>먹기</h1>
+
+   <div class="container-fluid"> 
+
+       <div class="row"> 
+        <div class="filter-button-group"> 
+           <!--<image class="btn-img" src="C:\Users\student\Downloads\PCqkd.jpg"><br></image>-->
+           <a href="/posts/21">
+               <img src="<%= image_path 'c1.png' %>" width="100">
+               <div class="text">
+               <p>카페</p>
+               </div>
+           </a> 
+          <!--<img src="<%#= image_path '2.2_fastfood.png' %>" width="100px">-->
+           <a href="/posts/22">
+               <img src="<%= image_path 'f2.png' %>" width="100">
+               <div class="text">
+               <p>패스트푸드</p>
+               </div>
+           </a>
+           <a href="/posts/23">
+               <img src="<%= image_path 'f3.png' %>" width="100">
+               <div class="text">
+               <p>논알콜 음식점</p>
+               </div>
+           </a> 
+           <a href="/posts/24">
+               <img src="<%= image_path 'n4.png' %>" width="100">
+               <div class="text">
+               <p>야시장</p>
+               </div>
+           </a> 
+         </div> 
+      </div> 
+   </div> 
+   
+<% elsif @category == '3' %>
+<h1>마시기</h1>
+
+     <div class="container-fluid"> 
+
+         <div class="row"> 
+          <div class="filter-button-group"> 
+             <a href="/posts/31">
+                 <img src="<%= image_path '3-1.jpg' %>" width="100">
+                 <div class="text">
+                 <p>일반 주점/호프</p>
+                 </div>
+             </a> 
+             <a href="/posts/32">
+                 <img src="<%= image_path '3-2.jpg' %>" width="100">
+                 <div class="text">
+                 <p>스몰비어</p>
+                 </div>
+             </a> 
+             <a href="/posts/33">
+                 <img src="<%= image_path '3-3.jpg' %>" width="100">
+                 <div class="text">
+                 <p>Bar/라운지바</p>
+                 </div>
+             </a> 
+             <a href="/posts/34">
+                 <img src="<%= image_path '3-4.png' %>" width="100">
+                 <div class="text">
+                 <p>이자카야</p>
+                 </div>
+             </a>
+           </div> 
+        </div> 
+     </div> 
+     
+<% elsif @category == '4' %>
+<h2>생활/편의</h2>
+
+    <div class="container-fluid"> 
+
+         <div class="row"> 
+          <div class="filter-button-group"> 
+             <a href="/posts/41">
+                 <img src="<%= image_path '4-1.png' %>" width="100">
+                 <div class="text">
+                 <p>의료</p>
+                 </div>
+             </a> 
+             <a href="/posts/42">
+                 <img src="<%= image_path '4-2.jpg' %>" width="100">
+                 <div class="text">
+                 <p>생활/금융</p>
+                 </div>
+             </a> 
+             <a href="/posts/43">
+                 <img src="<%= image_path '4-3.jpg' %>" width="100">
+                 <div class="text">
+                 <p>마트/편의점</p>
+                 </div>
+             </a> 
+             <a href="/posts/44">
+                 <img src="<%= image_path '4-4.jpg' %>" width="100">
+                 <div class="text">
+                 <p>헬스/스포츠</p>
+                 </div>
+             </a>
+             <a href="/posts/45">
+                 <img src="<%= image_path '4-5.jpg' %>" width="100">
+                 <div class="text">
+                 <p>공공시설</p>
+                 </div>
+             </a>
+           </div> 
+        </div> 
+    </div>
+    
+    <% elsif @category == '5' %>
+    <div class="container">
+    <h2><strong>마이페이지</strong></h2><br><br><br>
+      <% if user_signed_in? %>
+        <%= image_tag(current_user.image, :size => "100x100") %> <br><br>
+        <h3>너의 이름은 : <%= current_user.name %></h3>
+        <h3><a>너의 메일은 : <%= current_user.email %></a></h3>
+      <% end %>
+    <% end %>
+    </div>
+    
+
+
+<!-- 마이페이지를 제외한 페이지에만 지도 표시 -->
+<% unless @category == '5' %>
+<div class="container">
+    <div id="map" style="width:100%; height: 250px;"></div>    
+      
+  <div>
+      <span style="color:black"><p><img width="17" src="<%= image_path 'P.png' %>"> : 24시간 영업
+                          <img width="25" src="<%= image_path 'N.png' %>"> : 24시 이후
+                          <img width="20" src="<%= image_path 'B.png' %>"> : 24시 이전</p><p>　</p><p>　</p></p></span>
+  </div>
+</div>
+<!-- map의 크기는 직접 px로 지정해야 함 특히 높이,,, -->
+<!--<div class="iw_inner">   <h3>서울특별시청</h3>   <p>서울특별시 중구 태평로1가 31 | 서울특별시 중구 세종대로 110 서울특별시청<br>       <img src="'./img/hi-seoul.jpg' %>" width="55" height="55" alt="서울시청" class="thumb" /><br>       02-120 | 공공,사회기관 > 특별,광역시청<br>       <a href="http://www.seoul.go.kr" target="_blank">www.seoul.go.kr/</a>   </p></div>-->
+
+
+<!-- 자바 스크립트 코드 넣을 때, <script> 태그 안에 넣어준다. -->
+<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=xQrtIyFbnOwAG6cGMSS7&submodules=geocoder"></script>
+<!-- 네이버 지도 API 사용할 수 있게 하는 코드 -->
+<script type="text/javascript">
+    var naveraddr = new naver.maps.LatLng(37.3595704, 127.105399); // 네이버 팩토리
+    var jeju = new naver.maps.LatLng(33.3590628, 126.534361);  // 제주 백록담
+    var cityhall = new naver.maps.LatLng(37.5666805, 126.9784147);  // 서울시청
+    var gnst = new N.LatLng(37.497942,127.0265267); // 강남역
+    var ysst = new N.LatLng(37.5011188,127.0349583); // 역삼역
+    var ys1p = new N.LatLng(37.499925,127.0306543); // 역삼1동 우체국
+    var addrs = [naveraddr, jeju, cityhall];
+
+    var mapOptions = {
+        scaleControl: false,
+        logoControl: false,
+        mapDataControl: false,
+        zoomControl: true,
+        zoomControlOptions: {
+    //    style: naver.maps.ZoomControlStyle.SMALL,
+        position: naver.maps.Position.RIGHT_BOTTOM
+        },
+        minZoom: 1,
+        maxZoom: 15
+    };
+    var map = new naver.maps.Map('map', mapOptions);
+        map.setCenter(ys1p); // 중심 좌표 설정
+        map.setZoom(10);     // 기본 줌 레벨 변경
+        
+    // var data = <#%= @schools.html_safe %>
+    var data = <%= @dummies.html_safe %>
+    
+    var markers = [];
+    var infoWindows = [];
+    
+    data.forEach(function(dummy){
+        var content = [
+            '<h2><strong>'+dummy.name+'</strong></b>',
+            '<h4>'+dummy.address+'</h4>',
+            '<h4>'+dummy.contact+'</h4>',
+            '<h4>'+dummy.time+'</h4>',
+            // '<a href='+restaurant.link+'target="_blank">'+"알아보기"+'</a>'
+            ].join("");
+        var url = '';
+        if ( dummy.code == 1 ) { // 1:24시 이후까지(너부리)
+            url = "<%= image_path 'N.png' %>"
+        } else if ( dummy.code == 2) { // 2:24시 이전까지(보노보노)
+            url = "<%= image_path 'B.png' %>"
+        } else { // 0:24시간(포로리)
+            url = "<%= image_path 'P.png' %>"
+        }
+        var marker = new N.Marker({
+            position: new N.LatLng(dummy.lat, dummy.lng),
+            map: map,
+            icon: {
+                url: url,
+                size: new naver.maps.Size(50, 50),
+                origin: new naver.maps.Point(0, 0),
+                anchor: new naver.maps.Point(25, 25) // 사진 기준 좌표 (0,0)은 우하단!
+            },
+            // animation: 1(marker 제자리 뛰기)
+        });
+        var infoWindow = new N.InfoWindow({
+            content: content
+        });
+        
+        markers.push(marker);
+        infoWindows.push(infoWindow)
+    })
+   
+    naver.maps.Event.addListener(map, 'idle', function() {
+    updateMarkers(map, markers);
+    });
+    
+    function updateMarkers(map, markers) {
+    
+        var mapBounds = map.getBounds();
+        var marker, position;
+    
+        for (var i = 0; i < markers.length; i++) {
+    
+            marker = markers[i]
+            position = marker.getPosition();
+    
+            if (mapBounds.hasLatLng(position)) {
+                showMarker(map, marker);
+            } else {
+                hideMarker(map, marker);
+            }
+        }
+    }
+    
+    function showMarker(map, marker) {
+    
+        if (marker.getMap()) return;
+        marker.setMap(map);
+    }
+    
+    function hideMarker(map, marker) {
+    
+        if (!marker.getMap()) return;
+        marker.setMap(null);
+    }
+    
+    for (var i=0, ii=markers.length; i<ii; i++) {
+    naver.maps.Event.addListener(markers[i], 'click', getClickHandler(i));
+}
+
+    
+    // 해당 마커의 인덱스를 seq라는 클로저 변수로 저장하는 이벤트 핸들러를 반환합니다.
+    function getClickHandler(seq) {
+        return function(e) {
+            var marker = markers[seq],
+                infoWindow = infoWindows[seq];
+    
+            if (infoWindow.getMap()) {
+                infoWindow.close();
+            } else {
+                infoWindow.open(map, marker);
+            }
+        }
+    }
+    
+</script>
+
+  <!--<div class="container-fluid">-->
+  <!--  <div class="row">-->
+  <!--    <div class="nav-group" >-->
+        <!--<image class="btn-img" src="C:\Users\student\Downloads\PCqkd.jpg"><br></image>-->
+        
+  <!--      <a href='/cate1/1'><img data-no-retina="" alt="" title="" src="https://user-images.githubusercontent.com/37928445/43054553-10b1e130-8e6d-11e8-895b-f33943f28306.png"></a>-->
+  <!--      <a href='/cate2/2'><img data-no-retina="" alt="" title="" src="https://user-images.githubusercontent.com/37928445/43054550-1044eec2-8e6d-11e8-9625-66946c9135b8.png"></a>-->
+  <!--      <a href='/cate3/3'><img data-no-retina="" alt="" title="" src="https://user-images.githubusercontent.com/37928445/43054551-106831d4-8e6d-11e8-8b52-7c4bf8593cd2.png"></a>-->
+  <!--      <a href='/cate4/4'><img data-no-retina="" alt="" title="" src="https://user-images.githubusercontent.com/37928445/43054549-102055bc-8e6d-11e8-9fe3-9f28e5d8a4e1.png"></a>-->
+  <!--      <a href='/cate5/5'><img data-no-retina="" alt="" title="" src="https://user-images.githubusercontent.com/37928445/43054552-108cd606-8e6d-11e8-9343-460e13c032a8.png"></a>-->
+  <!--    </div>-->
+  <!--  </div>-->
+  <!--</div>	-->
+  
+  
+<% end %>
+   <div class="container-fluid">
+    <div class="row">
+      <div class="nav-group navbar-fixed-bottom">
+        <a href='/posts/1'><img data-no-retina="" alt="" title="" width="65" src="<%= params[:id].first == '1' ? image_path('놀기_mint.png') : image_path('놀기.png') %>"></a>
+        <a href='/posts/2'><img data-no-retina="" alt="" title="" width="65" src="<%= params[:id].first == '2' ? image_path('먹기_mint.png') : image_path('먹기.png') %>"></a>
+        <a href='/posts/3'><img data-no-retina="" alt="" title="" width="65" src="<%= params[:id].first == '3' ? image_path('마시기_mint.png') : image_path('마시기.png') %>"></a>
+        <a href='/posts/4'><img data-no-retina="" alt="" title="" width="65" src="<%= params[:id].first == '4' ? image_path('생활_편의_mint.png') : image_path('생활_편의.png') %>"></a>
+        <a href='/posts/5'><img data-no-retina="" alt="" title="" width="65" src="<%= params[:id].first == '5' ? image_path('MyPage_blue.png') : image_path('MyPage.png') %>"></a>
+      </div>
+    </div>
+  </div>

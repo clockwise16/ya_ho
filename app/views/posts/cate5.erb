@@ -1,0 +1,9 @@
+<h1><strong>마이페이지</strong></h1>
+
+  <% if user_signed_in? %>
+    <%= image_tag(current_user.image, :size => "100x100") %> <br>
+    <h3><strong>User Name : <%= current_user.name %></strong></h3><br>
+    <h3><a>User Email : <%= current_user.email %></a></h3><br>
+  <% else %>
+    
+  <% end %>
